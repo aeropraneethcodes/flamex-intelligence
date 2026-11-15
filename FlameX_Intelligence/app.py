@@ -31,25 +31,149 @@ CHALLENGE='https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/
 COLORS=['#2A6E9E','#BC645A','#70A8B1','#9F813D']
 C={'bg':'#F6F8FA','navy':'#18344F','blue':'#2878A5','muted':'#637588','rule':'#DCE4EA'}
 st.set_page_config(page_title='FlameX Intelligence | Dynamic Duo',page_icon='🔬',layout='wide',initial_sidebar_state='expanded')
+
+BASE=Path(__file__).resolve().parent
+MASTER=BASE/'data'/'flame_intelligence_master.csv'
+CATALOG=BASE/'data'/'investigations.csv'
+EVIDENCE_LIBRARY=BASE/'data'/'evidence_library.csv'
+CHALLENGE='https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/'
+COLORS=['#2A6E9E','#BC645A','#70A8B1','#9F813D']
+C={'bg':'#F6F8FA','navy':'#18344F','blue':'#2878A5','muted':'#637588','rule':'#DCE4EA'}
+
+st.set_page_config(
+    page_title='FlameX Intelligence | Dynamic Duo',
+    page_icon='🔬',
+    layout='wide',
+    initial_sidebar_state='expanded'
+)
+
 st.markdown('''<style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
-html,body,[class*="css"]{font-family:'DM Sans',system-ui,sans-serif}
-.stApp{background:#f6f8fa;color:#1e3042} .block-container{padding-top:1.25rem;max-width:1460px;padding-bottom:3rem}
-section[data-testid="stSidebar"]{background:white;border-right:1px solid #dce4ea}
-h1,h2,h3{font-family:Manrope,system-ui,sans-serif!important;color:#18344f!important;letter-spacing:-.03em}
+
+html,body,[class*="css"]{
+    font-family:'DM Sans',system-ui,sans-serif;
+}
+
+.stApp{
+    background:#f6f8fa;
+    color:#1e3042;
+}
+
+.block-container{
+    padding-top:5rem !important;
+    max-width:1460px;
+    padding-bottom:3rem;
+}
+
+section[data-testid="stSidebar"]{
+    background:white;
+    border-right:1px solid #dce4ea;
+}
+
+h1,h2,h3{
+    font-family:Manrope,system-ui,sans-serif!important;
+    color:#18344f!important;
+    letter-spacing:-.03em;
+}
+
 .stMarkdown p{line-height:1.55}
-.headerbox{background:white;padding:25px 30px 20px;border:1px solid #dce4ea;border-top:4px solid #2878a5;border-radius:10px;margin-bottom:20px}
-.brand{font-family:Manrope,sans-serif;font-weight:800;font-size:31px;letter-spacing:-1px;color:#18344f}
-.deck{font-size:14px;color:#637588;max-width:800px;margin-top:3px}
-.eyebrow{font-size:10px;font-weight:800;letter-spacing:1.9px;color:#2878a5;margin-bottom:6px}
-.micro{font-size:11px;letter-spacing:.5px;color:#718293}
-.panelbox{background:white;border:1px solid #dce4ea;border-radius:10px;padding:17px 18px;margin:6px 0}
-.notice{border-left:3px solid #2878a5;background:#eaf2f7;color:#284662;border-radius:5px;padding:11px 15px;margin:10px 0;font-size:13px}
-.caution{border-left:3px solid #b28b41;background:#faf3e7;color:#695022;border-radius:5px;padding:11px 15px;margin:10px 0;font-size:13px}
-.metric{background:white;border:1px solid #dce4ea;border-radius:10px;padding:14px 16px;min-height:102px}
-.metric .k{font-size:10px;font-weight:700;letter-spacing:1.15px;color:#627588;text-transform:uppercase}
-.metric .v{font-family:Manrope,sans-serif;font-size:26px;font-weight:800;color:#18344f;margin:5px 0 1px}
-.metric .n{font-size:11px;color:#768699}
+
+.headerbox{
+    background:white;
+    padding:25px 30px 20px;
+    border:1px solid #dce4ea;
+    border-top:4px solid #2878a5;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.brand{
+    font-family:Manrope,sans-serif;
+    font-weight:800;
+    font-size:31px;
+    letter-spacing:-1px;
+    color:#18344f;
+}
+
+.deck{
+    font-size:14px;
+    color:#637588;
+    max-width:800px;
+    margin-top:3px;
+}
+
+.eyebrow{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.9px;
+    color:#2878a5;
+    margin-bottom:6px;
+}
+
+.micro{
+    font-size:11px;
+    letter-spacing:.5px;
+    color:#718293;
+}
+
+.panelbox{
+    background:white;
+    border:1px solid #dce4ea;
+    border-radius:10px;
+    padding:17px 18px;
+    margin:6px 0;
+}
+
+.notice{
+    border-left:3px solid #2878a5;
+    background:#eaf2f7;
+    color:#284662;
+    border-radius:5px;
+    padding:11px 15px;
+    margin:10px 0;
+    font-size:13px;
+}
+
+.caution{
+    border-left:3px solid #b28b41;
+    background:#faf3e7;
+    color:#695022;
+    border-radius:5px;
+    padding:11px 15px;
+    margin:10px 0;
+    font-size:13px;
+}
+
+.metric{
+    background:white;
+    border:1px solid #dce4ea;
+    border-radius:10px;
+    padding:14px 16px;
+    min-height:102px;
+}
+
+.metric .k{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.15px;
+    color:#627588;
+    text-transform:uppercase;
+}
+
+.metric .v{
+    font-family:Manrope,sans-serif;
+    font-size:26px;
+    font-weight:800;
+    color:#18344f;
+    margin:5px 0 1px;
+}
+
+.metric .n{
+    font-size:11px;
+    color:#768699;
+}
+</style>''', unsafe_allow_html=True)
+
 hr{border-color:#dce4ea}.stButton button{border-radius:7px;font-weight:600}
 [data-testid="stMetric"]{background:white;border:1px solid #dce4ea;border-radius:9px;padding:12px 16px}
 [data-testid="stDataFrame"]{border:1px solid #dce4ea;border-radius:8px}
