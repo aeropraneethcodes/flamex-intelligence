@@ -175,7 +175,7 @@ h1,h2,h3{
 </style>''', unsafe_allow_html=True)
 
 hr{border-color:#dce4ea}.stButton button{border-radius:7px;font-weight:600}
-[data-testid="stMetric"]{background:white;border:1px solid #dce4ea;border-radius:9px;padding:12px 16px}
+.block-container{padding-top:5rem!important;max-width:1460px;padding-bottom:3rem}
 [data-testid="stDataFrame"]{border:1px solid #dce4ea;border-radius:8px}
 /* Navigation and homepage enhancements: deliberately retain the original FlameX palette. */
 section[data-testid="stSidebar"] [data-testid="stRadio"] label{font-size:.89rem}
