@@ -1,5 +1,0 @@
-Original source: team-uploaded flame_intelligence_master.csv
-SHA256: ae7a2190f624af26b2f20bb1a151bdced5625da6b87b75712d2498ab46ae8a2b
-Dataset: 274 rows / 15 columns; independent source metadata verification pending.
-NASA investigation reference: https://psi.nasa.gov/physci/repo/data/investigations/PSI-69
-Only FLEX row-level data is included. Catalog metadata for other investigations is not observational data.
