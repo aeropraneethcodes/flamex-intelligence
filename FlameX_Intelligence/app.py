@@ -30,8 +30,6 @@ EVIDENCE_LIBRARY=BASE/'data'/'evidence_library.csv'
 CHALLENGE='https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/'
 COLORS=['#2A6E9E','#BC645A','#70A8B1','#9F813D']
 C={'bg':'#F6F8FA','navy':'#18344F','blue':'#2878A5','muted':'#637588','rule':'#DCE4EA'}
-st.set_page_config(page_title='FlameX Intelligence | Dynamic Duo',page_icon='🔬',layout='wide',initial_sidebar_state='expanded')
-
 BASE=Path(__file__).resolve().parent
 MASTER=BASE/'data'/'flame_intelligence_master.csv'
 CATALOG=BASE/'data'/'investigations.csv'
@@ -172,8 +170,6 @@ h1,h2,h3{
     font-size:11px;
     color:#768699;
 }
-</style>''', unsafe_allow_html=True)
-
 hr{border-color:#dce4ea}.stButton button{border-radius:7px;font-weight:600}
 .block-container{padding-top:5rem!important;max-width:1460px;padding-bottom:3rem}
 [data-testid="stDataFrame"]{border:1px solid #dce4ea;border-radius:8px}
