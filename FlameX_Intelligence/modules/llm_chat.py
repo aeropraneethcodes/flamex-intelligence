@@ -167,5 +167,26 @@ def model_reply(question,df,catalog,provider,scope='Research evidence',history=N
         else:
             generated='**GENERAL DISCUSSION · NOT NASA-VERIFIED**\n\n'+generated
         return generated,None
+   
     except Exception as ex:
-        return None,f'Model request failed ({type(ex).__name__}). Check network, model configuration and credentials.'
+        status = getattr(ex, "status_code", None)
+        error_type = type(ex).__name__
+
+        if status == 401:
+            detail = "Authentication failed. Check your API token."
+        elif status == 402:
+            detail = "Insufficient inference credits or billing required."
+        elif status == 403:
+            detail = "Access denied. Check token permissions and account access."
+        elif status == 404:
+            detail = "Model or inference endpoint not found."
+        elif status == 429:
+            detail = "Rate limit or usage quota exceeded."
+        elif status is not None and status >= 500:
+            detail = "The AI provider encountered a server error."
+        else:
+            detail = "Connection or configuration error."
+
+        code = f"HTTP {status}" if status is not None else "No HTTP status"
+        return None, f"{code} — {detail} ({error_type})"
+
