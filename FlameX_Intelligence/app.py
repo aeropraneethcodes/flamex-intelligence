@@ -299,7 +299,7 @@ st.sidebar.caption('Independent research prototype · Not NASA-endorsed · Not o
 # Always-visible shortcuts; all 11 destinations remain available in the sidebar.
 nav_cols=st.columns(4)
 for column,label,destination in zip(nav_cols,
-        ['🏠 Overview','🧪 Explore data','💬 Ask FlameIQ','🎯 Judge demo'],
+        ['Overview','Explore data','Ask FlameIQ','Judge demo'],
         ['Mission overview','Combustion explorer','FlameIQ research assistant','Guided Tour']):
     with column:
         st.button(label,key='top_nav_'+destination.replace(' ','_'),
