@@ -179,7 +179,7 @@ st.sidebar.caption('Independent research prototype · Not NASA-endorsed · Not o
 # Always-visible shortcuts; all 11 destinations remain available in the sidebar.
 nav_cols=st.columns(4)
 for column,label,destination in zip(nav_cols,
-        ['🏠 Overview','🧪 Explore data','💬 Ask FlameIQ','🎯 Guided Tour'],
+        ['Overview','Explore data','Ask FlameIQ','Guided Tour'],
         ['Mission overview','Combustion explorer','FlameIQ research assistant','Guided Tour']):
     with column:
         st.button(label,key='top_nav_'+destination.replace(' ','_'),
@@ -520,7 +520,7 @@ elif page=='Predictive intelligence':
 
 elif page=='Artemis scenario explorer':
     title('Artemis scenario explorer', 'User-defined atmosphere examples are not NASA FLEX test records or fire-safety certification.')
-    alert('<b>USER-DEFINED SCENARIO — NOT AN OBSERVED NASA EXPERIMENT.</b> Atmospheric references are documented NASA design or screening conditions; neither is a proven fire-safety boundary.','caution')
+    alert('<b>USER-DEFINED SCENARIO, NOT AN OBSERVED NASA EXPERIMENT.</b> Atmospheric references are documented NASA design or screening conditions; neither is a proven fire-safety boundary.','caution')
     ref_choice=st.selectbox('Atmosphere reference',[
         'NASA exploration atmosphere — 34% O₂, 8.2 psia',
         'Historical materials test — 30% O₂, 10.2 psia',
@@ -559,7 +559,7 @@ elif page=='Artemis scenario explorer':
     # A joint reference quadrant with no experiments is intentionally out of predictive scope.
     empty_reference_region = bool((o2>=34 and psi<=8.2 and explored==0) or (o2>=30 and psi<=10.2 and historic==0))
     prediction=scenario_prediction(reg,scenario,nearby,moon_band=empty_reference_region)
-    if prediction.get('prediction') is None:alert('**Model output withheld:** '+prediction.get('reason','Unsupported input region.'),'caution')
+    if prediction.get('prediction') is None:alert('Model output withheld: '+prediction.get('reason','Unsupported input region.'),'caution')
     else:
         st.metric('Exploratory predicted rate field',f'{prediction["prediction"]:.4f}',f'Empirical residual band: {prediction["lower"]:.4f} to {prediction["upper"]:.4f}')
         st.caption(prediction['method'])
@@ -573,7 +573,7 @@ elif page=='Artemis scenario explorer':
 elif page=='NASA data lab':
     title('NASA data lab · experimental evidence',
           'Bring authentic NASA PSI tables into the same research desk without blending incompatible experiments.')
-    alert('**Scientific provenance:** The bundled 274-row FLEX CSV is team-supplied and preserved verbatim. Other NASA investigation tables are discoverable in NASA PSI, but **not bundled** in this build. Uploaded files remain marked as user-supplied until their source and checksum are independently checked.')
+    alert('Scientific provenance: The bundled 274-row FLEX CSV is team-supplied and preserved verbatim. Other NASA investigation tables are discoverable in NASA PSI, but **not bundled** in this build. Uploaded files remain marked as user-supplied until their source and checksum are independently checked.')
     coverage=source_coverage(st.session_state['psi_session_tables'])
     a,b,c=st.columns(3)
     with a:metric('PSI investigations indexed',len(coverage),'official NASA records')
@@ -699,7 +699,7 @@ elif page=='FlameIQ research assistant':
 elif page=='Guided Tour':
     title('90-second guided tour',
           'A reproducible chain from NASA investigation → scientific question → model → evidence boundary.')
-    alert('**Start here to explore FlameX:** The system ranks relevant NASA sources, executes numerical calculations only on data actually loaded, and prevents unsupported spacecraft safety claims.')
+    alert('Start here to explore FlameX: The system ranks relevant NASA sources, executes numerical calculations only on data actually loaded, and prevents unsupported spacecraft safety claims.')
     a,b,c=st.columns(3)
     with a:metric('FLEX source records',len(full),'original data, SHA-audited')
     with b:metric('Evidence passages',len(evidence_lib),'NASA-linked statements')
