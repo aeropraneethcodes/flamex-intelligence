@@ -1,7 +1,0 @@
-Original team-provided raw FLEX table: flame_intelligence_master.csv
-274 rows; 15 source columns; source bytes kept unchanged.
-SHA-256 (source file): ae7a2190f624af26b2f20bb1a151bdced5625da6b87b75712d2498ab46ae8a2b
-NASA PSI-69 metadata (DOI 10.60555/mbq8-0451) is the intended experiment reference.
-Direct byte-for-byte identity with NASA's hosted original could not be checked here.
-BASS-II, Saffire-I/II/III and SAME/SAME-R are source-linked metadata only unless an original NASA PSI export is supplied through the NASA Data Lab.
-The additional 7-study registry is data/psi_source_manifest.csv. No external raw rows were invented, transcribed from another team's project, or substituted for primary measurements.
